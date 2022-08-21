@@ -7,7 +7,6 @@ CREATE TABLE IF NOT EXISTS eventos(
   fecha DATE NOT NULL,
   hora TIME NOT NULL,
   lugar VARCHAR(255) NOT NULL,
-  precio DECIMAL(5,2) NOT NULL,
   likes INT DEFAULT 0 NOT NULL,
   descripcion VARCHAR(255),
   url_imagen VARCHAR(255)
