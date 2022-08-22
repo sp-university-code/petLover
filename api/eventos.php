@@ -11,7 +11,7 @@ require_once "../bd/conexion.php";
 $conexion = new dbConexion();
 
 if($_SERVER['REQUEST_METHOD']=='GET'){
-  
+
   $sqlEventos = mysqli_query($conexion->conexion,"SELECT * FROM eventos");
   if(mysqli_num_rows($sqlEventos) > 0){
       $eventos = mysqli_fetch_all($sqlEventos,MYSQLI_ASSOC);
