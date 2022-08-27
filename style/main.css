@@ -1,0 +1,28 @@
+.action-event {
+  font-size: 23px;
+  line-height: 27px;
+  text-decoration-line: underline;
+  color: rgb(44, 44, 44);
+}
+
+.img-card-content {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.253);
+}
+
+.card-title-img {
+  position: absolute;
+  z-index: 1;
+  left: 20px;
+  bottom: 10px;
+  color: white;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.card:hover .img-card-content {
+  cursor: pointer;
+}
+
+.col-card {
+  width: 32%;
+}
