@@ -10,7 +10,7 @@ let eventos = async () => {
   
   for(let evento of jsonData){
     contentListCard+= `
-    <div class="card col-card px-0" id=${evento.id_evento}>
+    <div class="card col-card px-0 card_evento" id=${evento.id_evento}>
       <div class="img-card-content">
         <img src="../images/${evento.url_imagen}" class="card-img-top">
         <h5 class="card-title card-title-img m-0">${evento.nombre}</h5>
@@ -25,6 +25,7 @@ let eventos = async () => {
   }
 
   listCard.innerHTML = contentListCard
+
   
 }
 
@@ -32,12 +33,15 @@ let eventos = async () => {
 window.addEventListener("load",async()=>{
   await eventos();
 
-  let card = document.querySelector('.img-card-content')
+  let card = document.querySelector('.card_evento')
   console.log(card)
-
   card.addEventListener("click",() => {
     console.log(card)
+    id_evento = card.getAttribute("id")
+    console.log(id_evento)
+    window.location.href = "http://localhost:3000/view/comentarios.html";
   })
+
 })
 
 

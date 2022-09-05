@@ -2,7 +2,7 @@
     "conexion": {
       "server" : "localhost",
       "user" : "root",
-      "password" : "jazch080301",
+      "password" : "root",
       "database" : "petLoverDB"
     }
 }
