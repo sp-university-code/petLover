@@ -8,10 +8,11 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 require_once "../bd/conexion.php";
 $conexion = new dbConexion();
 
-$data = json_decode(file_get_contents("php://input"));
-#echo json_encode($_POST);
-echo json_encode($data);
+$comentario = $_POST['comentario'];
+$id_evento = $_POST['id_evento'];
 
 mysqli_query($conexion->conexion,"INSERT INTO comentarios(id_evento,comentario) VALUES ('$data->id_evento','$data->comentario')");
 
+$response = array('create'=>'true');
+echo json_encode($responde);
 ?>
