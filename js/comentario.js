@@ -1,4 +1,4 @@
-id=1
+import {id} from './cardImg.js'
 
 let evento = async () => {
   let rawData = await fetch("/api/eventos.php",{
@@ -7,7 +7,7 @@ let evento = async () => {
         'Content-Type':'application/json'
     },
     body: JSON.stringify({
-        id
+      id:id.id_evento
     })
     });
   let jsonData = await rawData.json();
@@ -16,7 +16,7 @@ let evento = async () => {
   let datosCabecera = `
     <div class="evento">
       <p id="nombre-evento">${jsonData[0].nombre}</p>
-      <img src="../images/${jsonData[0].url_imagen}">
+      
       <i class="fa-solid fa-heart"></i>
       <p id="likes">${jsonData[0].likes}</p>
       <i id="regresarIcon" class="fa-solid fa-chevron-left"></i>
@@ -31,7 +31,7 @@ let evento = async () => {
         'Content-Type':'application/json'
     },
     body: JSON.stringify({
-        id
+        id:id.id_evento
     })
     });
   let jsonComentarios = await rawComentarios.json();
@@ -53,7 +53,8 @@ let evento = async () => {
                     <div class="card" style="width: 25rem;">
                         <div class="card-body">
                           <h4 class="card-title">Detalles</h4>
-                          <img src="" class="card-img-top">
+                          <img src="../images/${jsonData[0].url_imagen}" class="card-img-top">
+                          
                           <p class="card-text">${jsonData[0].descripcion}</p>
                           <div class="info">
                             <span>Lugar:</span><p class="lugar">${jsonData[0].lugar}</p>

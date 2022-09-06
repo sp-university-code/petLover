@@ -1,12 +1,12 @@
 let formatDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-
+let id_evento = 1;
 let eventos = async () => {
   let rawData = await fetch("/api/eventos.php");
   let jsonData = await rawData.json();
 
   let listCard = document.querySelector('#list-card')
 
-  contentListCard = ''
+  let contentListCard = ''
   
   for(let evento of jsonData){
     contentListCard+= `
@@ -33,15 +33,17 @@ let eventos = async () => {
 window.addEventListener("load",async()=>{
   await eventos();
 
-  let card = document.querySelector('.card_evento')
-  console.log(card)
-  card.addEventListener("click",() => {
-    console.log(card)
-    id_evento = card.getAttribute("id")
-    console.log(id_evento)
-    window.location.href = "http://localhost:3000/view/comentarios.html";
-  })
+  let cards = document.querySelectorAll('.card_evento')
+  
+  for(let card of cards){
+    card.addEventListener("click",() => {
+      console.log(card)
+      id_evento = card.getAttribute("id")
+      console.log(id_evento)
+      window.location.href = "http://localhost:3000/view/comentarios.html";
+    })
+  }
 
 })
 
-
+export const id = {id_evento};

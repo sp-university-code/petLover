@@ -38,9 +38,8 @@ window.addEventListener("load",()=>{
      fetch("../api/new.php", {
        method: "post",
        body: datos
-     }).then(res => res.json()).then(data => {
-         console.log(data);
-
+     }).then(res => {
+        window.location.href = "http://localhost:3000/view/index.html";
      }).catch(console.error);
    });
 
