@@ -12,6 +12,6 @@ $data = json_decode(file_get_contents("php://input"));
 #echo json_encode($_POST);
 echo json_encode($data);
 
-#mysqli_query($conexion->conexion,"INSERT INTO comentarios(id_evento,comentario) VALUES ('$data->id_evento','$data->comentario')");
+mysqli_query($conexion->conexion,"INSERT INTO comentarios(id_evento,comentario) VALUES ('$data->id_evento','$data->comentario')");
 
 ?>

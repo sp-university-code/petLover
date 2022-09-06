@@ -92,6 +92,6 @@ let evento = async () => {
 }
 
 
-window.addEventListener("load",()=>{
-  evento();
+window.addEventListener("load",async()=>{
+  await evento();
 })

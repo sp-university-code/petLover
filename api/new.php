@@ -1,5 +1,4 @@
 <?php
-
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: access");
 header("Access-Control-Allow-Methods: GET,POST");
@@ -9,17 +8,19 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 require_once "../bd/conexion.php";
 $conexion = new dbConexion();
 
-#print_r($_POST);
-echo "new";
-$data = json_decode(file_get_contents("php://input"));
-#echo json_encode($_POST);
-#echo json_encode($data);
-echo "'$data->nombre',$data->fecha,$data->hora,'$data->lugar',$data->likes,'$data->descripcion','$data->imagen'";
+$imgE = $_FILES['imgE'];
+$nombre = $_POST['nombre'];
+$fecha = $_POST['fecha'];
+$hora = $_POST['hora'];
+$lugar = $_POST['lugar'];
+$descripcion = $_POST['descripcion'];
 
+$ruta_imgE = md5($imgE["tmp_name"]) . ".jpg";
+$ruta = "../images/" . $ruta_imgE;
+move_uploaded_file($imgE["tmp_name"], $ruta);
 
-#echo $data->nombre;
-#echo date("Y-m-d");
+mysqli_query($conexion->conexion,"INSERT INTO eventos(nombre,fecha, hora, lugar, likes, descripcion,url_imagen) VALUES ('$nombre','$fecha','$hora','$lugar',0,'$descripcion','$ruta_imgE')");
 
-#mysqli_query($conexion->conexion,"INSERT INTO eventos(nombre,fecha, hora, lugar, likes, descripcion,url_imagen) VALUES ('$data->nombre','$data->fecha','$data->hora','$data->lugar',$data->likes,'$data->descripcion','$data->imagen')");
-
+$response = array('create'=>'true');
+echo json_encode($responde);
 ?>
