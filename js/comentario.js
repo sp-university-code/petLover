@@ -66,13 +66,13 @@ let evento = async () => {
                 </div>   
                 <div class="row">
                     <div class="col-sm-8">   
-                        <form>
+                        <form enctype="multipart/form-data" id="form_post">
                             <h3 class="pull-left">Nuevo comentario</h3>
                             <button type="submit" class="btn btn-info pull-right">Enviar</button>
                             <fieldset>
                                 <div class="row">
                                     <div class="form-group col-xs-12 col-sm-9 col-lg-10">
-                                        <textarea class="form-control" id="message" placeholder="Escribe tu comentario..." required=""></textarea>
+                                        <textarea class="form-control" id="comentario" placeholder="Escribe tu comentario..." required=""></textarea>
                                     </div>
                                 </div>    
                             </fieldset>
@@ -95,4 +95,22 @@ let evento = async () => {
 
 window.addEventListener("load",async()=>{
   await evento();
+  const form_post = document.getElementById('form_post');
+    const comentario = document.querySelector('#comentario');
+    console.log(form_post);
+     form_post.addEventListener('submit', function(e){
+      e.preventDefault();
+       let datos = new FormData();
+       console.log(FormData);
+       console.log(comentario);
+       datos.append("comentario",comentario.value);
+       datos.append("id_evento",id.id_evento);
+  
+       fetch("../api/newComment.php", {
+         method: "post",
+         body: datos
+       }).then(res => {
+           console.log(comentario);
+       }).catch(console.error);
+     });
 })

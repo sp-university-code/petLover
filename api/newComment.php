@@ -11,8 +11,6 @@ $conexion = new dbConexion();
 $comentario = $_POST['comentario'];
 $id_evento = $_POST['id_evento'];
 
-mysqli_query($conexion->conexion,"INSERT INTO comentarios(id_evento,comentario) VALUES ('$data->id_evento','$data->comentario')");
+mysqli_query($conexion->conexion,"INSERT INTO comentarios(id_evento,comentario) VALUES ($id_evento,'$comentario')");
 
-$response = array('create'=>'true');
-echo json_encode($responde);
 ?>

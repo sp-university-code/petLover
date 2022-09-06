@@ -8,7 +8,7 @@ window.addEventListener("load",()=>{
      form_post.addEventListener('submit', function(e){
        let datos = new FormData();
        datos.append("comentario",comentario.value);
-       datos.append("id_evento",id_evento.value);
+       datos.append("id_evento",id.id_evento);
   
        fetch("../api/newComment.php", {
          method: "post",
